@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Class Bindings</title>
+  <script <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<style>
+  .blue {
+    color: blue;
+  }
+
+  .big {
+    font-size:32px;
+    font-weight: bold;
+  }
+</style>
+
+<body>
+  <div id="class-example">
+    <div v-bind:class="{ blue: isBlue, big: isBig }">Class Binding Example</div>
+    <div v-bind:class="[blueClass, bigClass]">Array Syntax Example</div>
+    <div v-bind:class="[{ blue: isBlue }, bigClass]">Mix and Match</div>
+  </div>
+
+  <script>
+      var vm = new Vue({
+        el: '#class-example',
+        data: {
+          isBlue: false,
+          isBig: false,
+          blueClass: 'blue',
+          bigClass: 'big'
+        }
+      })
+    </script>
+</body>
+</html>

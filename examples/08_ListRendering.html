@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>List Rendering</title>
+  <script <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+
+
+<body>
+  <div id="list-rendering-example">
+    <h1>Example 1</h1>
+    <ul id="example-1">
+      <li v-for="item in items" :key="item.id">
+        {{ item.message }}
+      </li>
+    </ul>
+
+    <h1>Example 2 - including index</h1>
+    <ul id="example-2">
+      <li v-for="(item, index) in items" :key="item.id">
+        {{ parentMessage }} - {{ index }} - {{ item.message }}
+      </li>
+    </ul>
+
+    <h1>Discussion - reactivity of lists (mutation methods, replacing element)</h1>
+    <div>Mutation Methods:</div>
+    <ul>
+        <li><code>push()</code></li>
+        <li><code>pop()</code></li>
+        <li><code>shift()</code></li>
+        <li><code>unshift()</code></li>
+        <li><code>splice()</code></li>
+        <li><code>sort()</code></li>
+        <li><code>reverse()</code></li>
+        </ul>
+
+  </div>
+
+  <script>
+    var vm = new Vue({
+      el: '#list-rendering-example',
+      data: {
+        parentMessage: 'Parent',
+        items: [
+          { message: 'Foo', id: 1 },
+          { message: 'Bar', Id: 2 }
+        ]
+      }
+    })
+  </script>
+</body>
+
+</html>

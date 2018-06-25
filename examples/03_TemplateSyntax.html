@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Template Syntax</title>
+  <script <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+  <div id="app">
+    <div>Interpolation: {{ msg }}</div>
+    <div v-once>Interpolation (once): {{ msg }}</div>
+    <button v-bind:disabled="isButtonDisabled">Attributes Example</button>
+    <div>JavaScript Expressions: {{ isButtonDisabled ? 'Disabled' : 'Not Disabled' }}</div>
+    <div v-if="isButtonDisabled">Directive Example (v-if)</div>
+    <a v-bind:href="url" target="_blank">Argument Example (href)</a>
+    <div v-on:click="clickIt()">Argument Example (click)</div>
+    <a :href="url" target="_blank">v-bind shorthand</a>
+    <div @click="clickIt()">v-on shorthand</div>
+  </div>
+
+  <script>
+    var app = new Vue({
+      el: '#app',
+      data: {
+        msg: 'Hello Vue!',
+        isButtonDisabled: false,
+        url: 'https://www.ostusa.com/'
+      },
+      methods: {
+          clickIt() {
+              alert('You Clicked It!');
+          }
+      }
+    })
+  </script>
+</body>
+</html>

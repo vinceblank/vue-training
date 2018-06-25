@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Components</title>
+  <script <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+
+
+<body>
+  <div id="example-1">
+    <button-counter name="A"></button-counter>
+    <button-counter name="B"></button-counter>
+    <button-counter name="C" @ten-clicked="tenClicks($event)"></button-counter>
+  </div>
+
+  <script>
+    // Define a new component called button-counter
+    Vue.component('button-counter', {
+      template: '<button v-on:click="increment">You clicked {{name}} {{ count }} times.</button>',
+      props: {
+        name: String
+      },
+      // Data must be a function
+      data: function () {
+        return {
+          count: 0
+        }
+      },
+      methods: {
+        increment() {
+          this.count++;
+          if(this.count % 10 === 0) {
+            this.$emit('ten-clicked', this.count);
+          }
+        }
+      }
+    })
+
+    var example1 = new Vue({
+      el: '#example-1',
+      data: {
+      },
+      methods: {
+        tenClicks(count) {
+          alert(`You reached ${count} clicks!`);
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>

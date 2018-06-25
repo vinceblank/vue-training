@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Computed Proerties</title>
+  <script <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+  <div id="example">
+    <p>Original message: "{{ message }}"</p>
+    <p>Computed reversed message: "{{ reversedMessage }}"</p>
+    <p>Computed reversed message: "{{ reversedMessage }}"</p>
+    <p>Method reversed message: "{{ reverseMessage() }}"</p>
+    <p>Method reversed message: "{{ reverseMessage() }}"</p>
+  </div>
+
+  <script>
+    var vm = new Vue({
+      el: '#example',
+      data: {
+        message: 'Hello',
+        firstName: 'Vince',
+        lastName: 'Blank'
+      },
+      computed: {
+        // a computed getter
+        reversedMessage: function () {
+          // `this` points to the vm instance
+          console.log('Computed Property Evaluated!')
+          return this.message.split('').reverse().join('')
+        },
+        fullName: {
+          // computed getter
+          get: function () {
+            return this.firstName + ' ' + this.lastName
+          },
+          // computed setter
+          set: function (newValue) {
+            var names = newValue.split(' ')
+            this.firstName = names[0]
+            this.lastName = names[names.length - 1]
+          }
+        }
+      },
+      methods: {
+        reverseMessage: function () {
+          // `this` points to the vm instance
+          console.log('Method Executed!')
+          return this.message.split('').reverse().join('')
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>
